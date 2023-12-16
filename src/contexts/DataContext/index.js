@@ -20,28 +20,28 @@ export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
 
-  //  déclaration d'état de "last"
-  const [last, setLast] = useState(null);
+  // //  déclaration d'état de "last"
+  // const [last, setLast] = useState(null);
 
   const getData = useCallback(async () => {
 
     try {
       // Appel à la méthode loadData de l'objet api pour charger les données
       setData(await api.loadData());
-
-      // trie les événements par date
-      // et en récupérant le premier élément de la liste triée (qui est le dernier événement).
-      const lastEvt = data?.events.sort((evtA, evtB) =>
-        new Date(evtB.date) < new Date(evtA.date) ? -1 : 1)[0];
-
-
-      //  Stockage des données
-      setLast(lastEvt)
-
+    
     } catch (err) {
       setError(err);
     }
   }, []);
+
+  
+  // // trie les événements par date
+  // et en récupérant le premier élément de la liste triée (qui est le dernier événement).
+  const last = data && data.events ? data.events
+    .filter(event => event.date)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+  [0]
+    : null
 
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export const DataProvider = ({ children }) => {
         error,
         // Ajout de last la dernière date 
         // pour  y avoir accès partout
-        last,
+        last
       }}
     >
       {children}

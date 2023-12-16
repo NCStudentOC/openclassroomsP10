@@ -16,8 +16,7 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    // Ajout newValue comme valeur onChange 
-    onChange(newValue);
+    onChange(newValue); // newValue passé en valeur
     setValue(newValue);
     setCollapsed(newValue);
   };
@@ -97,7 +96,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-
 }
 
 export default Select;
