@@ -10,6 +10,7 @@ const Menu = () => (
     <ul>
       <li>
         <a href="#nos-services">Nos services</a>
+        console.log(click)
       </li>
       <li>
         <a href="#nos-realisations">Nos réalisations</a>

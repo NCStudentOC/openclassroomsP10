@@ -65,6 +65,7 @@ const Slider = () => {
                   name="radio-button"
                   // idx index de l'élément dans  byDataDesc en index index de la carte du slider
                   checked={index === radioIdx}
+                  readOnly
                 />
               ))}
             </div>
